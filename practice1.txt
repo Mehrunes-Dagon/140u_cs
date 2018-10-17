@@ -1,0 +1,29 @@
+1. What is your name and G-Number?
+   William Winberg, G03967459
+2. Why are you taking CS 140U? What are your goals for this class?
+   I want to learn about unix commands and scripting
+3. Are there specific topics or skills you wish to learn in this class?
+   Net work protocols, shell scripting, eficient file management
+4. What are the most important things the instructor can do to help you succeed in this class?
+   Be available for Zoom meetings and have well written instructions for course material
+5. What are the most important things the instructor should avoid doing in this class?
+   Ignoring students or influencing them to not actively participate
+6. What are the most important things the instructor should know about you?
+   I am spening the majority of my time right now looking for a programming job and building my 
+   portfolio so my participation will mostly be on nights and weekends
+7. List three characteristics of free software
+   It's free to use, study (open source) and distribute
+8. In what language is Linux written?
+   Core in C
+9. Why is the Linux filesystem referred to as hierarchical?
+   There is a root directory which all others branch off of.
+10. Give three examples of poor password choices, and explain why each example is a poor password.
+    password; easily guessable and often a default password
+    123456; also easily guessable
+    qwerty; very common and easily guessable
+11. What is the name of the PCC Linux server?
+    syccuxas01.pcc.edu
+12. What is your userid on the PCC Linux server?
+    william.winberg
+13. If you forget the password for your PCC Linux account, what should you do?
+    check the documentation
