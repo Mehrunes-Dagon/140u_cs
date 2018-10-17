@@ -1,0 +1,20 @@
+Level 0 Questions:
+  1. cp /etc/passwd ~/passwd
+  2. mv ~/passwd ~/"my password file"
+  3. rm ~/my\ password\ file
+  4. mkdir ~/"this is my password directory"
+  5. cp /etc/passwd ~/this\ is\ my\ password\ directory/"this is my password file"
+  6. grep 'doug' ~/this\ is\ my\ password\ directory/this\ is\ my\ password\ file
+  7. grep 'doug' ~/this\ is\ my\ password\ directory/this\ is\ my\ password\ file >> ~/this\ is\ my\ password\ directory/"this is my doug file"
+  8. head -50 ~/this\ is\ my\ password\ directory/this\ is\ my\ password\ file
+  9. tail -50 ~/this\ is\ my\ password\ directory/this\ is\ my\ password\ file
+  10. tar -cf ~/practice.archive.file ~/this\ is\ my\ password\ directory
+
+Level 1 Questions:
+  1. sort /etc/passwd | tail -3
+  2. tar -cf ~/home.archive.file ~/
+  3. cat /etc/passwd -n
+  4. who | cut -d' ' -f1
+  5. head -24 /etc/passwd | tail -1
+  6. date '+%A'
+  7. who | cut -d' ' -f1 | sort -u
