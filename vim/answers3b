@@ -1,0 +1,18 @@
+1. mail -f ~/mbox
+2. set VISUAL=/usr/bin/vim
+3. set EDITOR=/usr/bin/vim
+4. *
+5. .
+6. d doug.jones
+7. mail -s"Delete this message" -a ~/.mailrc doug.jones < /dev/null
+8. ~v
+9. h
+10. h-
+11. S doug.jones
+12. x
+13. 
+set EDITOR=/usr/bin/vim, sets the default message editor to vim
+set VISUAL=/usr/bin/vim, sets the default visual editor to vim
+set record=~/wwinberg/letters/mailout &
+set folder=~/wwinberg/letters, together these record my outgoing mail in a directory
+alias me william.winberg@syccuxas01.pcc.edu, setting a shortcut for myself to save time
