@@ -1,0 +1,10 @@
+1. :500t.
+2. :540 | 485t541
+3. :%s/ASTARTE/ASTORETH/g
+4. :g/^SIDONIAN/s/their/there/g
+5. :g/^Of/d
+6. :g/^/m0
+7. :%sort
+8. :%s/\n\{2,}/\r\r 
+9. :%g/^\s*$/d
+10. :%g/ASTARTE/m0
