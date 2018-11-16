@@ -1,0 +1,37 @@
+1.)
+:r !cat /home/courses/140u-doug.jones/paradise-lost.txt | sed -e :a -e 's/^.\{1,78\}$/ &/;ta' | head
+:r will read whats next to the file buffer
+! will execute a bash command
+output:
+
+                 <feff>The Project Gutenberg EBook of Paradise Lost, by John Milton
+
+              This eBook is for the use of anyone anywhere at no cost and with
+          almost no restrictions whatsoever.  You may copy it, give it away or
+           re-use it under the terms of the Project Gutenberg License included
+                                with this eBook or online at www.gutenberg.net
+
+
+                                                          Title: Paradise Lost
+
+2.)
+:r !awk 'BEGIN{FS=":"}$1 ~ /doug.jones/{print $1}' /etc/passwd | sed 's/^/finger /' | bash
+:r reads the command into the file buffer
+! will execute a bash command
+output:
+
+Login: doug.jones                       Name: INSTRUCTOR Doug Jones
+Directory: /home/student/doug.jones     Shell: /bin/bash
+Last login Thu Nov 15 16:32 (PST) on pts/33 from sytcb312m4089.ad.pcc.edu
+Mail last read Thu Nov 15 21:56 2018 (PST)
+No Plan.
+
+3.) 
+cat /home/courses/140u-doug.jones/paradise-lost.txt | sed -e :a -e 's/^.\{1,78\}$/ &/;ta' | head
+:28w !bash
+:28w selects line 28 and writes it to...
+!bash executes the command using bash
+
+4.)
+awk 'BEGIN{FS=":"}$1 ~ /doug.jones/{print $1}' /etc/passwd | sed 's/^/finger /' | bash
+:36w !bash r/+
