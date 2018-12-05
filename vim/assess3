@@ -1,0 +1,162 @@
+INSTRUCTIONS
+============
+     Using vim, compose an email message to
+     doug.jones@syccuxas01.pcc.edu
+     
+     with the subject line:
+     CS 140U Assessment 3 Submission
+
+     and a message body created as follows:
+
+          1.   Start your message with the following lines:
+   SCORE:
+
+   COMMENTS:
+
+         Thanks,
+            - Doug
+
+          2.   Insert two blank lines, followed by the line:
+               Question 1: Create directory
+
+               Following this line, insert the bash command to
+               create a subdirectory named 'assess3' in your
+               working directory.
+
+               Execute this command and create the 'assess3' directory.
+
+          3.   Insert two blank lines, followed by the line:
+               Question 2: Copy files
+
+               Following this line, insert the SINGLE (one command only) bash command to
+               copy the following files to your 'assess3' directory:
+
+                         /home/courses/140u-doug.jones/main.cpp
+                         /home/courses/140u-doug.jones/main.h
+                         /home/courses/140u-doug.jones/makefile
+
+               Execute this command and copy the files.
+
+          4.   Insert two blank lines, followed by the line:
+               Question 3: List directory
+
+               Following this line, insert the bash command to
+               list (in long format) the contents of your 'assess3'
+               directory.
+
+               Execute the command, and insert the output of the command
+               on the line following the bash command.
+
+          5.   Insert two blank lines, followed by the line:
+               Question 4: main.cpp contents
+
+               Following this line, insert the vim command-mode line to read the
+               contents of the file
+               assess3/main.cpp
+               into your file buffer.
+
+               Execute the command, i.e. insert the file contents
+               into your message.
+
+          6.   Insert two blank lines, followed by the line:
+               Question 5: Move Comments
+              
+               Following this line, insert the vim command-mode command (single command,
+               no command separators)  that will
+               move the 4 lines that begin with '//' to the lines
+               preceeding the line that begins with '#include', and put
+               them in sorted order.
+
+               Execute the command.  The result of your command should be to change
+               the contents read in Step (5) to:
+               //0.
+               //1.  Course:        CS 140U
+               //2. Assignment:    Assessment 3
+               //3.
+               #include "main.h"
+
+          7.   Insert two blank lines, followed by the line:
+               Question 6: make command
+          
+               Following this line, insert the vim command-mode command to
+               execute the following bash command:
+               make --directory=assess3
+
+               Execute the command, and insert the output of the command in the
+               following lines.
+
+          8.   Insert two blank lines, followed by the line:
+               Question 7: run program
+
+               Following this line, insert the vim command-mode command to
+               execute the following bash command:
+               assess3/main
+
+               Execute the command, and insert the output of the command in the
+               following lines.
+
+          9.   At this point your email message should be fairly long, and consist
+               of a series of 7 questions and their answers.
+
+               Make sure you have followed each step precisely. If you are not satisfied
+               that you have composed your email message correctly you should exit vim and
+               then exit mailx without sending the email message, and then try it again.
+
+               When you ARE satisfied with your email message, save your file buffer, exit 
+               vim, and tranmit the message.  This is your submission. 
+         
+               You should then start on the next module.
+
+
+
+SCORE:
+
+COMMENTS:
+
+      Thanks,
+         - Doug
+
+
+Question 1: Create directory
+mkdir ~/assess3          
+
+
+Question 2: Copy files
+cp /home/courses/140u-doug.jones/{main.cpp,main.h,makefile} ~/assess3
+
+
+Question 3: List directory
+ls -l ~/assess3
+-rw------- 1 william.winberg students 738 Dec  2 23:13 main.cpp
+-rw------- 1 william.winberg students 284 Dec  2 23:13 main.h
+-rw------- 1 william.winberg students  86 Dec  2 23:13 makefile
+
+
+Question 4: main.cpp contents
+:r ~/assess3/main.cpp
+#include "main.h"
+using namespace std;
+int main(int argc, char **argv) 
+{
+     auto my_time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+     char * my_time_string = ctime(&my_time);
+     my_time_string[strlen(my_time_string) - 1] = '\0';
+
+//3.
+     uid_t my_userid;
+     char * my_username;
+     my_userid = getuid();
+//1.  Course:        CS 140U
+     my_username = getlogin(); 
+
+     std::cout << "[" << __FILE__ << " compiled on " << __DATE__ << " " << __TIME__ << "]" << std::endl;
+//2. Assignment:    Assessment 3
+     std::cout << "[Program Executed " << my_time_string << " by " << my_username << " (UID " << my_userid << ")]" << std::endl;
+     std::cout << "Hello World!" << std::endl;
+
+//0.
+     return 0;
+}
+
+
+Question 5: Move Comments
