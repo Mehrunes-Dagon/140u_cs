@@ -1,0 +1,67 @@
+1.)
+mkdir -v ~/answers4p
+The mkdir command will create a directory file within the current working directory unless specified otherwise. The -v (--verbose) option will output a message about what the command did. Otherwise, there is no output. Writing the path before the new directory files name will create the directory with the specified path. ie. ~/fileName will create a file named 'fileName' in the home directory
+mkdir: created directory ‘/home/student/william.winberg/answers4p’
+
+2.)
+chmod -v 700 ~/answers4p
+The chmod command will change the permissions of a file. Following the command, I added -v(--verbose) to output a message about what the command did. Next is the fun part: There are 9 possible file permission(read, write and execute for owner, user group and world) set to "on" or "off" in binary, ie. 111 000 000, which are represented in 3 octal digits, 700, in the third part of the command. The last part of the command specified the file to have the permission changed.
+mode of ‘/home/student/william.winberg/answers4p’ retained as 0700 (rwx------)
+
+3.)
+setfacl -m user:doug.jones:rwx ~/answers4p
+The setfacl command sets access control lists (ACL). The -m specifies that an existing ACL will be modified. May instead use --set to overwrite the current ACL but I chose to just modify it. Next, I specify the list by username (user:doug.jones) and modify the permissions to be read, write and execute(:rwx). Lastly, the file on which to modify the ACL for is specified (~/answers4p). This command has no output but here's the output for 'getfacl ~/answers4p'...
+getfacl: Removing leading '/' from absolute path names
+# file: home/student/william.winberg/answers4p
+# owner: william.winberg
+# group: students
+user::rwx
+user:doug.jones:rw-
+group::---
+mask::rw-
+other::---
+
+4.)
+touch ./-i
+The touch command will change a files timestamp to the current time. However, if the file does not exist, it will create the file. Normally, a command 'touch exampleFile' would create a file in the current working directory named 'exampleFile'. '-' however is a reserved character and Linux will interpret it as an option for the touch command(-i is not an available option for touch). To avoid this, we write a './' before the filename. This tells bash to search the current working directory for the following file (-i) which is not there so it is then created with a current time timestamp. This command has no output.
+
+5.)
+ find . -mtime 1 -delete
+ The find command searches for files in a given directory. The next part (.) specifies the current working directory. '-mtime 1' specifies that the search will be looking for files last modified n*24 (1*24) hours ago. '-delete' will delete the files which match the search criteria. This command has no output.
+
+ 6.)
+ find . -name "[aeiou]???????" -delete
+ 'find .' will search the current directory for files. '-name' directs find to search by filenames. '"[aeiou]???????"' tells the command to look for files the begin with a single letter in the group "aeiou" and exactly 7 more characters (???????) after, exactly 8 characters total. This command has no output.
+
+ 7.)
+ find . -name "*.cpp" -exec grep -q "#include" {} \; -printf "%f\n"
+ 'find .' will search the current directory for files. '-name' directs find to search by filenames. '"*.cpp"' tells the command to look for filenames that begin with 0 or more characters(*) and end with '.cpp'. '-exec' will execute a command on each said file. 'grep' is the command to be executed with the '-q' option which surpress normal output of grep. '"#include"' specified the searchstring of grep. '{}' specifies the name of the file for grep to run on, left blank it will default the the found file. '\;' marks the end of the -exec command. '-printf' is the find option to print a characteristic of whats found. '"%f\n"' tells printf to print the filename followed by a newline character :]
+ foo.cpp
+
+ 8.)
+ find -type l -delete
+'find .' will search the current directory for files. Omitting the '.' defaults to current working directory. '-type l' specifies the file type to look for to be link files. '-delete' deletes the found files. This command has no output.
+
+9.)
+ls -a [aeiou]*[wzy]
+'ls' list all the files in the specified directory. If no directory is specified, it defaults to the current directory. The '-a' option tells ls to list ALL of the files, including hidden files. Next, the parameter '[aeiou]*[wzy]' tells ls to list only files that begin with one letter in the group 'aeiou', have 0 or more letters inbetween (*) and end with any letter in the group 'wzy'.
+adjfjw
+
+10.)
+ls -1a ?? ???? ?????? ????????
+'ls' list all the files in the specified directory. If no directory is specified, it defaults to the current directory. The '-1a' options tell ls to list all(a) files and one(1) file per line. The '??' glob searches for filename of exactly two characters, '????' exactly 4 characters and so on...
+a234
+adjfjw
+b1234567
+ww
+
+11.)
+find . -name "????????" -exec wc -l {} \;
+'find' just like 'find .' will search the current directory for files. '-name' directs find to search by filenames. The glob '"????????"' tells find to look for file with names of exactly 8 length. '-exec' will execute a command on each found file. 'wc' with the '-l' option will print the line count of a specified file. '{}' specifies each found file for wc to be executed on. '\;' marks the end of the exec statement.
+0 ./b1234567
+0 ./fooderss
+
+12.)
+stat -c "%a %n" ./* | sort -r | head -1
+prolly a better way to do this but I'm le tired. 'stat' is a super cool command that reads a ton of info about a file. The '-c' option lets you customize the output like printf in find. Here I put '"%a %n"' to ge just the octal representation (%a) of each file along with the name(%n). I then pipe this to a sort command with '-r' option so it goes it descending order rather than ascending. I then pipe that output to 'head -1' do get just the first line.
+

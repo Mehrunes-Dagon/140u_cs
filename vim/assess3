@@ -98,6 +98,10 @@ INSTRUCTIONS
           9.   At this point your email message should be fairly long, and consist
                of a series of 7 questions and their answers.
 
+
+
+
+
                Make sure you have followed each step precisely. If you are not satisfied
                that you have composed your email message correctly you should exit vim and
                then exit mailx without sending the email message, and then try it again.
