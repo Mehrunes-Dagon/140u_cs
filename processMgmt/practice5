@@ -1,0 +1,57 @@
+mail -s "CS 140U Practice 5 Submission" doug.jones < practice5
+
+a.
+printenv | sort | cat -n
+The 'printenv' with no arguments prints all the environment variables. That output is then piped to 'sort' which defaults to alphabetical order. Lastly, the sorted output is them piped to cat which, with no arguments, simply prints to stdout. Along with the '-n' option, cat will number the output lines.
+
+b.
+printenv JAVA_ROOT
+The 'printenv' with a single argument(an environment variable name) prints the value of said variable. 
+
+c.
+PATH=$PATH:$PWD:$HOME
+Environment variables are assign in VAR=VALUE format and referenced in $VALUE format. In a variables definition, :'s are used to separate multiple values. When its all put together, this command will assign the variable 'PATH' to its current value(so not to lose existing values) as well as the value of 'PWD' and 'HOME'.
+
+d.
+ps -eo pid,time
+The 'ps' command outputs information about active processes. The '-e' option tells the command to select all processes on the system(you asked for info on 'each process of the system' so I think this is what you wanted. Otherwise the 'e' can be omitted). The '-o' option allows custom formant of the output(choices follow). 'pid' selects the process ID number and 'time' selects the total CPU time of the processes to be displayed.
+
+e.
+find / -type f -exec grep -l "doug.jones" {} \; 1>~/out 2>/dev/null &
+This find command will search every file in the hierarchy of root(/). It will execute(-exec) the bash command 'grep' on every file and output the file names(-l) in which the string "doug.jones" is found. '{}' declares that 'grep -l' will be executed on every instance of the results of 'find / -type f' and '\;' marks the end of '-exec'. The standard output(1) of each of these processes are then directed(>) to '~/out' and the standard errors(2) are directed(>) to '/dev/null'. Lastly, this command is told to run in the background(&).
+
+f.
+ ps -o pid | find -name "*[24680]" -exec kill {} \;
+
+     (f)  Write a bash command that will kill all of the even-numbered processes associated 
+          with your userid, and no other processes.
+
+
+
+     (g)  Write a bash command that will start the program
+          /home/courses/140u-doug.jones/zombie_maker
+          as a background process, with standard output redirected to /dev/nulthat will kill all of the even-numbered processes associated 
+          with your userid, and no other processes.
+
+     (g)  Write a bash command that will start the program
+          /home/courses/140u-doug.jones/zombie_maker
+          as a background process, with standard output redirected to /dev/null.
+          
+          This program will create a zombie process.
+
+     (h)  Write a bash command that will display the process id, parent process id, and wait
+          channel for all zombie processes on the server.  Do not display any additional
+          information.  Here is an example of the type of output your command should produce:
+28318 28317 exit
+
+     (i)  Write a bash command that will kill job 1.
+
+     (j)  Write a bash command that will generate a file named
+          ~/cpp_files
+          that contains the name and absolute path of all files on the system
+          that contain the line
+          int main(int argc, char **argv)
+
+          The contents of the file ~/cpp_files should be in alphabetical order.  The
+          command you create should run in background, and redirect standard 
+          error to the file ~/stderr. 
